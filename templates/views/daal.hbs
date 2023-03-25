@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daal</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="cart.js"></script> -->
+    <link rel="stylesheet" href="daal.css">
+
+    <!-- <link rel="stylesheet" href="path/to/fontawesome.min.css"> -->
+
+</head>
+
+<body>
+    <div class="container py-4 my-4 mx-auto d-flex flex-column">
+        <div class="header">
+            <div class="row r1">
+                <div class="col-md-9 abc">
+                    <h1>Daal</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container-body mt-4">
+            <div class="row">
+                <div class="col-md-5 p-0 klo">
+                    <ul>
+                        <li>100% Quality</li>
+                        <li>Free Shipping</li>
+                        <li>Easy Returns</li>
+                        <li>MRP-100/kg</li>
+                        <li>EMI Starting from (On Credit Cards)</li>
+                        <li>Normal Delivery : 4-5 Days</li>
+                        <li>Express Delivery : 2-3 Days</li>
+                        <li>COD Available (All Over India)</li>
+                    </ul>
+                </div>
+                <div class="col-md-7"> <img src="images/daal.jpeg" width="90%" height="95%"
+                        style="border-radius: 25px;"> </div>
+            </div>
+        </div>
+        <div class="footer d-flex flex-column mt-5">
+            <div class="row r4">
+                <div class="col-md-2 myt des"><a href="#">Description</a></div>
+                <input id="Quantity" type="number" placeholder="Quantity in kg" required style="height: 36px;
+                border-radius: 5px;
+                width: 30%;
+                margin-top: 6px;
+                border: 2px solid rgb(239, 17, 17);    font-size: 23px;
+    color: black;">
+                <!-- <div class="col-md-2 myt "><a href="#">kg</a></div> -->
+                <div class="col-md-2 mio offset-md-4" style="    border: 2px solid rgb(239, 17, 17);
+                height: 14px;
+                width: 150px;
+                align-content: center;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 6px;
+                font-size: medium;
+                border-radius: 6px;"><button id="cart-button" style="height: 30px; cursor: pointer;"
+                        onclick="addtocart()">ADD TO CART</a></div>
+                <div class="col-md-2 myt "><button type="button" class="btn btn-outline-warning"
+                        onclick="addTocart()"><a href="#">BUY NOW</a></button></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function addtocart() {
+            // Get the quantity value
+            var quantity = document.getElementById("Quantity").value;
+            if (quantity == '' || quantity=='0') {
+                console.log("hii");
+                // history.back();
+                alert("Quantity can't be zero");
+                return;
+            }
+
+            // Get the product details
+            var name = "Daal";
+            var price = 100;
+            var image = "images/daal.jpeg"
+
+            // Get the existing cart items from localStorage, or create an empty array if it doesn't exist yet
+            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+            // Add the new item to the cart
+            var item = {
+                name: name,
+                price: price,
+                quantity: quantity,
+                image: image
+            };
+            cartItems.push(item);
+
+            // Save the updated cart to localStorage
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+            // Redirect to cart.html
+            window.location.href = "/cart";
+        }
+    </script>
+
+</body>
+
+</html>

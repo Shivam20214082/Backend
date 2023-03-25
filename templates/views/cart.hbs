@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart.css">
+</head>
+
+<body>
+    {{>navbar}}
+
+    <div class="main">
+
+        <h1 style="text-align: center; margin-top:20px">Your Cart</h1>
+
+        <div class="total" style="display: flex; justify-content: center; margin: 25px;">
+            <span class="list">Total Number of Item in Your cart is</span>
+            <input type="number" id="tnumber" value="0" style="text-align: center; margin-left: 10px;" readonly><br>
+
+        </div>
+        <h1 id="table" style="display: flex; justify-content: center;margin: 25px;">
+        </h1>
+
+
+        <div id="product" style="display: flex;flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;">
+        </div>
+
+
+
+
+
+        <div class="card" style="margin-bottom: 10px;">
+            <div class="card-body" style="display: flex; justify-content: center; border: 2px">
+                <span class="list" style="margin-top: 75px;margin-left: 44%;margin-right: 7px; ;">Total Amount</span>
+                <input type="number" id="tmrp" value="0" style=" text-align: center;margin-top: 73px;height: 20px;width: 14%;margin-left: 10px;
+                    margin-right: 20px;" readonly>
+                <button type="button" onclick="buy()" class="btn btn-warning btn-block btn-lg"
+                    style="background-color: red;margin-top: 70px;height: 35px;width: 25%; cursor: pointer;">Proceed to
+                    Pay</button>
+            </div>
+        </div>
+    </div>
+
+    {{>footeri}}
+
+
+
+    <script>
+        // Get the cart items from localStorage, or create an empty array if it doesn't exist yet
+        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        var totalItems = 0;
+        var totalMrp = 0;
+        for (var i = 0; i < cartItems.length; i++) {
+            totalItems++;
+            totalMrp += cartItems[i].price * cartItems[i].quantity;
+        }
+        var currentTotal = parseInt(document.getElementById("tnumber").value);
+        document.getElementById("tnumber").value = totalItems;
+        // console.log(totalMrp);
+        var currentTotal = parseInt(document.getElementById("tmrp").value);
+        document.getElementById("tmrp").value = totalMrp;
+
+        // Display the cart items
+        for (var i = 0; i < cartItems.length; i++) {
+            var item = cartItems[i];
+            var html = `
+        <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div>
+                <h3>${item.name}</h3>
+                <p>${item.price} Rs x <span class="quantity-value">${item.quantity}</span> = <span class="total">${item.price * item.quantity} Rs</span></p>
+                <button id="delete-button-${i}" class="delete-btn">Delete</button>
+            </div>
+            <div class="quantity">
+                <button class="decrease-btn">-</button>
+                <input type="number" class="quantity-input" value="${item.quantity}">
+                <button class="increase-btn">+</button>
+            </div>
+        </div>
+    `;
+            var div = document.createElement("div");
+            div.innerHTML = html;
+            document.getElementById("product").appendChild(div);
+
+            // Create delete button for each item
+            var deleteBtn = document.getElementById(`delete-button-${i}`);
+            deleteBtn.onclick = (function (itemIndex) {
+                return function () {
+                    // Remove item from cartItems array
+                    cartItems.splice(itemIndex, 1);
+                    // Save updated cartItems to localStorage
+                    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                    // Remove item div from the DOM
+                    div.remove();
+                    // Update the total number of items
+                    var currentTotal = parseInt(document.getElementById("tnumber").value);
+                    var currentMrp = parseInt(document.getElementById("tmrp").value);
+                    document.getElementById("tnumber").value = currentTotal - 1;
+                    window.location.href = "/cart"
+                };
+            })(i);
+
+            // div.appendChild(deleteBtn);
+            document.getElementById("product").appendChild(div);
+        }
+
+    </script>
+
+    <script src="srcipt.js"></script>
+    <script src="cart.js"></script>
+</body>
+
+</html>
