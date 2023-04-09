@@ -7,73 +7,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daal</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- <script src="cart.js"></script> -->
     <link rel="stylesheet" href="daal.css">
-
-    <!-- <link rel="stylesheet" href="path/to/fontawesome.min.css"> -->
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
-    <div class="container py-4 my-4 mx-auto d-flex flex-column">
-        <div class="header">
-            <div class="row r1">
-                <div class="col-md-9 abc">
-                    <h1>Daal</h1>
-                </div>
-            </div>
-        </div>
+
+    {{>navbar}}
+
+    <div style="margin: 25px; margin-left:40px;margin-right:40px">
         <div class="container-body mt-4">
             <div class="row">
-                <div class="col-md-5 p-0 klo">
+                <div style="margin: 10px;  margin-top:20px; height:110% ;margin-right:40px" > <img src="images/daal.jpeg" 
+                        style=" width:100%; height:300px;margin-right:40px; border-radius:30px"><br>
+                        <h2 style="margin-left:10px; text-align:center">ApnaKart New Brand Daal :</h2> <br><h4 style="margin-left:10px; text-align:center"> healthy | no additives | high in protein</h4>
+                </div>
+                <div class="col-md-5 p-0 klo" style="margin-right:100px">
+                    <h1 style="text-align: center;"></h1>
+                    
                     <ul>
-                        <li>100% Quality</li>
-                        <li>Free Shipping</li>
-                        <li>Easy Returns</li>
-                        <li>MRP-100/kg</li>
+                        <li><h3>MRP : 100/kg</h3> <h4>(inclusive of all taxes)</h4></li>
+                        <li>100% Quality  | No mixture | Full of protein | No cholesterol</li>
+                        <li>Free Shipping on order above Rs. 699</li>
+                        <li>No return available</li>
                         <li>EMI Starting from (On Credit Cards)</li>
                         <li>Normal Delivery : 4-5 Days</li>
                         <li>Express Delivery : 2-3 Days</li>
-                        <li>COD Available (All Over India)</li>
+                        <li>Cash On Delivery Available (All Over India)</li>
                     </ul>
                 </div>
-                <div class="col-md-7"> <img src="images/daal.jpeg" width="90%" height="95%"
-                        style="border-radius: 25px;"> </div>
+                <div class="col-md-5 p-0 klo" style="margin-right:0px">
+                    <h2 style="text-align: center;">Description</h2><br>
+                    <ul>
+                        <li>
+                            This daal is proven to be highly rich in protein.</li>
+                            <li>This is good for heart patient too <br>as there is 0% cholesterol.</li>
+                            <li>There is no additives.
+                        </li>
+                    </ul>
+            <div class="row r4" >
+                <div>
+                <input id="Quantity" type="number" placeholder="Quantity in kg" required style="height: 34px; border-radius: 5px;
+    width: 90%;
+    margin-top: 3px;
+    margin-right: 32px;
+    margin-bottom:25px;
+    border: 2px solid rgb(14, 105, 115);
+    font-size: 20px;
+    color: black;"></div>
+                <div ><button id="cart-button" style="height: 41px;cursor: pointer;    margin-left: 33px; ;border-radius: 6px;width: 150px;background-color: #0ce613;color: white;"
+                        onclick="addtocart()">𝑨𝒅𝒅 𝒕𝒐 𝑪𝒂𝒓𝒕</a></div>
+            </div>
+                </div>
+                
             </div>
         </div>
-        <div class="footer d-flex flex-column mt-5">
-            <div class="row r4">
-                <div class="col-md-2 myt des"><a href="#">Description</a></div>
-                <input id="Quantity" type="number" placeholder="Quantity in kg" required style="height: 36px;
-                border-radius: 5px;
-                width: 30%;
-                margin-top: 6px;
-                border: 2px solid rgb(239, 17, 17);    font-size: 23px;
-    color: black;">
-                <!-- <div class="col-md-2 myt "><a href="#">kg</a></div> -->
-                <div class="col-md-2 mio offset-md-4" style="    border: 2px solid rgb(239, 17, 17);
-                height: 14px;
-                width: 150px;
-                align-content: center;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                margin-top: 6px;
-                font-size: medium;
-                border-radius: 6px;"><button id="cart-button" style="height: 30px; cursor: pointer;"
-                        onclick="addtocart()">ADD TO CART</a></div>
-                <div class="col-md-2 myt "><button type="button" class="btn btn-outline-warning"
-                        onclick="addTocart()"><a href="#">BUY NOW</a></button></div>
-            </div>
+        <div>
         </div>
     </div>
-
-
+    {{>footeri}}
     <script>
         function addtocart() {
             // Get the quantity value
             var quantity = document.getElementById("Quantity").value;
-            if (quantity == '' || quantity=='0') {
+            if (quantity == '' || quantity == '0') {
                 console.log("hii");
                 // history.back();
                 alert("Quantity can't be zero");
@@ -104,7 +102,7 @@
             window.location.href = "/cart";
         }
     </script>
-
+    <script src="srcipt.js"></script>
 </body>
 
 </html>

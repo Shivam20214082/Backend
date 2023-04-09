@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&family=Varela+Round&display=swap");
 body {
-  background-color: #b1dea0a3;
+  background-color: #7be2e573;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
-html, body {
+html,
+body {
   height: 100%;
 }
 body {
@@ -19,83 +20,82 @@ main {
   flex: 1;
 }
 
-
-nav{
+nav {
   /* position: fixed; Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%;
-    font-family: 'Ubuntu', sans-serif;
-    font-family: 'Varela Round', sans-serif;
+  font-family: "Ubuntu", sans-serif;
+  font-family: "Varela Round", sans-serif;
 }
 
-nav div div div{
+nav div div div {
   background-color: #eff0ea;
   color: #ec1111;
 }
 
-nav div{
-    display:  flex;
-    align-items: center;
-    list-style-type: none;
-    height: 65px;
-    background-color: #e7f0f0;;
-    color: bisque;
+nav div {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  height: 72px;
+  background-color: #1fa8a8;
+  color: #07db35;
 }
-nav div li{
-    padding: 0 12px;
+nav div li {
+  padding: 0 12px;
 }
 
-.brand img{
-    width: 54px;
-    padding: 0 8px;
+.brand img {
+  width: 54px;
+  padding: 0 8px;
 }
-.brand{
-    color: rgb(34, 0, 255);
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 1.3rem;
+.brand {
+  color: rgb(34, 0, 255);
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 a:link {
-    /* color: black; */
-    text-decoration: none;
-}
-  
-  /* visited link */
-a:visited {
-    color: rgb(247, 5, 5);
-    text-decoration: none;
-}
-  
-  /* mouse over link */
-a:hover {
-    color: hotpink;
-    text-decoration: none;
-}
-  
-  /* selected link */
-a:active {
-    color: blue;
-    text-decoration: none;
+  /* color: black; */
+  text-decoration: none;
 }
 
-.login{
+/* visited link */
+a:visited {
+  color: rgb(5, 7, 66);
+  text-decoration: none;
+}
+
+/* mouse over link */
+/* a:hover {
+    color: hotpink;
+    text-decoration: none;
+} */
+
+/* selected link */
+a:active {
+  color: blue;
+  text-decoration: none;
+}
+
+.login {
   cursor: pointer;
 }
 /* search bar */
-.topnav input[type=text] {
-    float: right;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-right: 8px;
-    margin-left: 12px;
-    width: 100%;
-    font-size: 17px;
-    border-radius: 7px;
+.topnav input[type="text"] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 8px;
+  margin-left: 12px;
+  width: 100%;
+  font-size: 17px;
+  border-radius: 7px;
 }
-.topnav input[type=button] {
-  background-color: #07db35;
+.topnav input[type="button"] {
+  background-color: #287f75;
   color: #ffffff;
   cursor: pointer;
   float: right;
@@ -109,16 +109,16 @@ a:active {
   border-radius: 7px;
   font-size: 17px;
 }
-.cart img{
-    width: 54px;
-    padding: 0 8px;
+.cart img {
+  width: 54px;
+  padding: 0 8px;
 }
-.cart{
-    color: rgb(34, 0, 255);
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 1rem;
+.cart {
+  color: rgb(34, 0, 255);
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1rem;
 }
 /* .body{
     margin: auto;
@@ -163,10 +163,10 @@ body {
 }
 
 .product img {
-    border-radius: 25px;
-    width: 115%;
-    height: 230px;
-    margin-bottom: 10px;
+  border-radius: 25px;
+  width: 115%;
+  height: 230px;
+  margin-bottom: 10px;
 }
 
 .product-info {
@@ -183,7 +183,8 @@ body {
   margin-bottom: 10px;
 }
 
-.left-button, .right-button {
+.left-button,
+.right-button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -198,7 +199,7 @@ body {
   cursor: pointer;
   margin-right: 10px;
 }
-.button{
+.button {
   display: flex;
   justify-content: space-between; /* aligns the left button to the left and the right button to the right */
   /* align-items: center; */
@@ -221,9 +222,8 @@ body {
   background-color: #3e8e41;
 }
 
-
 footer {
-  background-color: #726d6d;
+  background-color: #67b7c0cc;
   text-align: center;
   position: relative;
   bottom: 0;
@@ -232,12 +232,12 @@ footer {
   margin-top: auto;
   padding: 20px 0 10px;
 }
-.Copyright{
+.Copyright {
   color: aliceblue;
   text-align: center;
   margin-bottom: 20px;
 }
-footer_link.img{
+footer_link.img {
   margin: 4px;
   display: block;
 }

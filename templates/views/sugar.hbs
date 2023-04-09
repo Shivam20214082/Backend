@@ -1,0 +1,111 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MILK</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="cart.js"></script> -->
+    <link rel="stylesheet" href="daal.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    
+    {{>navbar}}
+
+      <div style="margin: 25px; margin-left:40px;margin-right:40px">
+        <div class="container-body mt-4">
+            <div class="row">
+                <div style="margin: 10px;  margin-top:20px; height:110% ;margin-right:40px"> <img src="images/sugar.jpeg" style=" width:100%; height:300px;margin-right:40px; border-radius:10px"><br>
+                        <h2 style="margin-left:10px; text-align:center">ApnaKart New Brand SUGAR:</h2> <br><h4 style="margin-left:10px; text-align:center"> healthy | no additives | full of minerals</h4>
+                </div>
+                <div class="col-md-5 p-0 klo" style="margin-right:100px">
+                    <h1 style="text-align: center;"></h1>
+                    
+                    <ul>
+                        <li><h3>MRP : 40/kg</h3> <h4>(inclusive of all taxes)</h4></li>
+                        <li>Pure sugar available.</li>
+                        <li>100% Quality  | Healthy | Rich in minerals | Rich in Calcium</li>
+                        <li>Free Shipping on order above Rs. 699</li>
+                        <li>No return available</li>
+                        <li>EMI Starting from (On Credit Cards)</li>
+                        <li>Normal Delivery : 2-5 Days</li>
+                        <li>Express Delivery : 2-3 Days</li>
+                        <li>Cash On Delivery Available (All Over India)</li>
+                    </ul>
+                </div>
+                <div class="col-md-5 p-0 klo" style="margin-right:0px">
+                    <h2 style="text-align: center;">Description</h2><br>
+                    <ul>
+                        <li>
+                            Our milk is purely obtained from respective animals.</li>
+                            <li>We sell the best brand milk which has been 
+                                <br>proven to be healthy for bones.</li>
+                            <li>It is found to be nutritious, rich in minerals.
+                        </li>
+                    </ul>
+            <div class="row r4">
+                <div>
+                <input id="Quantity" type="number" placeholder="Quantity in kg" required="" style="height: 34px; border-radius: 5px;
+    width: 90%;
+    margin-top: 3px;
+    margin-right: 32px;
+    margin-bottom:25px;
+    border: 2px solid rgb(14, 105, 115);
+    font-size: 20px;
+    color: black;"></div>
+                <div><button id="cart-button" style="height: 41px;cursor: pointer;    margin-left: 33px; ;border-radius: 6px;width: 150px;background-color: #0ce613;color: white;" onclick="addtocart()">𝑨𝒅𝒅 𝒕𝒐 𝑪𝒂𝒓𝒕</button></div>
+            </div>
+                </div>
+                
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+
+
+    {{>footeri}}
+
+
+    <script>
+        function addtocart() {
+            // Get the quantity value
+            var quantity = document.getElementById("Quantity").value;
+            if (quantity == '' || quantity=='0') {
+                console.log("hii");
+                // history.back();
+                alert("Quantity can't be zero");
+                return;
+            }
+
+            // Get the product details
+            var name = "Sugar";
+            var price = 50;
+            var image = "images/sugar.jpeg"
+
+            // Get the existing cart items from localStorage, or create an empty array if it doesn't exist yet
+            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+            // Add the new item to the cart
+            var item = {
+                name: name,
+                price: price,
+                quantity: quantity,
+                image: image
+            };
+            cartItems.push(item);
+
+            // Save the updated cart to localStorage
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+            // Redirect to cart.html
+            window.location.href = "/cart";
+        }
+    </script>
+
+    <script src="srcipt.js"></script>
+
+
+</body></html>

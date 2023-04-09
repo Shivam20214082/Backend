@@ -5,6 +5,7 @@
     <title>Login and Registration Forms</title>
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
 
@@ -13,7 +14,7 @@
     <div class="main">
     <div class="form-selector">
       <button id="register-btn" onclick="document.getElementById('register-form').style.display = 'block';  document.getElementById('login-form').style.display = 'none';">Register</button>
-      <button id="login-btn" onclick="document.getElementById('login-form').style.display = 'block';  document.getElementById('register-form').style.display = 'none';">Login</button>
+      <button id="login-btn2" onclick="document.getElementById('login-form').style.display = 'block';  document.getElementById('register-form').style.display = 'none';">Login</button>
     </div>
 
     <div id="register-form" class="form-container">
@@ -36,7 +37,7 @@
     </div>
 
     <div id="login-form" class="form-container">
-        <form>
+        <form action="/check" method="POST">
         <h2>Login Form</h2>
         <label for="email">Email</label>
         <input type="email" id="email2" name="email" required>

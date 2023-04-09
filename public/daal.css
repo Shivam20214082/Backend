@@ -1,29 +1,9 @@
-body {
-    background: #ffc107;
-    font-family: Arial, Helvetica, sans-serif
-}
-
-.container {
-    background: #fff !important;
-    border: none;
-    border-radius: none
-}
 
 .row{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.abc {
-    padding-left: 40px
-}
-
-.pqr {
-    padding-right: 70px;
-    padding-top: 14px
-}
-
-
 
 li {
     list-style: none;
@@ -58,19 +38,13 @@ li {
 }
 
 .r4 {
-    padding-left: 25px
+    margin: 25px;
+    display: flex;
+    padding-left: 0px;
+    flex-direction: column;
+    justify-content: right;
 }
 
-.btn-outline-warning {
-    border-radius: 25;
-    border: 2px solid #f4072c;
-    color: #000;
-    font-size: 16px;
-    font-weight: bold;
-    width: 90%;
-    margin-right: 40px;
-    height: 45px;
-}
 
 @media screen and (max-width: 620px) {
     .container {

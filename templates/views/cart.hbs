@@ -80,9 +80,9 @@
                 <button id="delete-button-${i}" class="delete-btn">Delete</button>
             </div>
             <div class="quantity">
-                <button class="decrease-btn">-</button>
+                <button class="decrease-btn" id="decrease-btn-${i}">-</button>
                 <input type="number" class="quantity-input" value="${item.quantity}">
-                <button class="increase-btn">+</button>
+                <button class="increase-btn" id=increase-btn-${i}">+</button>
             </div>
         </div>
     `;
@@ -110,6 +110,15 @@
 
             // div.appendChild(deleteBtn);
             document.getElementById("product").appendChild(div);
+
+            //working of + and - button
+            {{!-- var plus=document.getElementById(`increase-btn-${i}`);
+            plus.onclick=(function (itemIndex){
+                return function(){
+                    
+                }
+            }) --}}
+
         }
 
     </script>
