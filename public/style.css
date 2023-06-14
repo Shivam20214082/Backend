@@ -284,3 +284,37 @@ footer_link.img {
     margin-left: 0px;
   }
 }
+
+@media only screen and (device-width: 360px) and (device-height: 740px) and (-webkit-device-pixel-ratio: 4) {
+  .topnav {
+    line-height: 65px;
+    font-weight: bold;
+    /* font-size: 36px; */
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .topnav li{
+    margin: 3px;
+  }
+  .topnav input[type="text"]{
+    width: 100%;
+  }
+  .search-btn{
+    margin-left: 5%;
+  }
+
+  .brand{
+    padding-left: 0%;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .brand img{
+    padding: 0%;
+  }
+  .cart{
+    /* font-size: 36px; */
+    padding-left: 0%;
+    margin-left: 0px;
+  }
+}
