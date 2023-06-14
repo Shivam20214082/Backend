@@ -279,4 +279,8 @@ footer_link.img {
   .brand img{
     padding: 0%;
   }
+  .cart{
+    padding-left: 0%;
+    margin-left: 0px;
+  }
 }
