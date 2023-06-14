@@ -30,6 +30,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #0062cc;
 }
+
 .login_form {
   pointer-events: none;
 }
@@ -37,9 +38,11 @@ input[type="submit"]:hover {
 #register-form {
   display: block;
 }
+
 #login-form {
   display: none;
 }
+
 .form-selector {
   display: flex;
   flex-direction: row;
@@ -47,14 +50,8 @@ input[type="submit"]:hover {
   margin: 25px;
   margin-right: 25px;
 }
-#register-btn {
-  cursor: pointer;
-  border-radius: 10px;
-  background-color: #0e85da;
-  margin-right: 25px;
-  width: 13%;
-  padding: 4px;
-}
+
+#register-btn,
 #login-btn2 {
   cursor: pointer;
   border-radius: 10px;
@@ -62,4 +59,26 @@ input[type="submit"]:hover {
   margin-right: 25px;
   width: 13%;
   padding: 4px;
+}
+
+/* Responsive styles */
+
+@media (max-width: 768px) {
+  form {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .form-selector {
+    flex-direction: column;
+    align-items: center;
+    margin: 25px 0;
+  }
+
+  #register-btn,
+  #login-btn2 {
+    width: 50%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 }
