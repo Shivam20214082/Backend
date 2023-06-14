@@ -23,7 +23,8 @@ main {
 nav {
   /* position: fixed; Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
-  width: 100%;
+  /* width: 100%; */
+
   font-family: "Ubuntu", sans-serif;
   font-family: "Varela Round", sans-serif;
 }
@@ -37,7 +38,7 @@ nav div {
   display: flex;
   align-items: center;
   list-style-type: none;
-  height: 72px;
+  /* height: 72px; */
   background-color: #1fa8a8;
   color: #07db35;
 }
@@ -67,11 +68,6 @@ a:visited {
   text-decoration: none;
 }
 
-/* mouse over link */
-/* a:hover {
-    color: hotpink;
-    text-decoration: none;
-} */
 
 /* selected link */
 a:active {
@@ -257,4 +253,30 @@ footer_link.img {
   text-align: center;
   z-index: 1;
   display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .topnav {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .topnav li{
+    margin: 3px;
+  }
+  .topnav input[type="text"]{
+    width: 100%;
+  }
+  .search-btn{
+    margin-left: 5%;
+  }
+
+  .brand{
+    padding-left: 0%;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .brand img{
+    padding: 0%;
+  }
 }

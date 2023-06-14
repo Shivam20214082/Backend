@@ -1,0 +1,89 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Payment gate</title>
+        <!-- custom css file link  -->
+        <link rel="stylesheet" href="payment1.css"/>
+        <link rel="stylesheet" href="style.css"/>
+
+    </head>
+    <body>
+
+        {{>navbar}}
+
+        <div class="main">
+            <div class="left">
+                <form action="/address" method="post">
+                    <h3 class="title">billing address</h3>
+                    <span>full name :</span>
+                    <input type="text" placeholder="Enter Your Name" name="name"/>
+
+                    <span>email :</span>
+                    <input type="email" id="current-email" placeholder="Enter Your correct Email Id" name="email" readonly/>
+
+                    <span>Phone Number :</span>
+                    <input type="number" placeholder="Enter Your Number" name="phone_number"/>
+
+                    <span>address :</span>
+                    <input type="text" placeholder="room - street - locality" name="address"/>
+
+                    <span>city :</span>
+                    <input type="text" placeholder="Enter Your City Name" name="city"/>
+
+                    <span>state :</span>
+                    <input type="text" placeholder="Enter Your State" name="state"/>
+
+                    <span>zip code :</span>
+                    <input type="text" placeholder="123456" name="zip_code"/>
+                     <input type="hidden" name="cartItems" id="cartItems">
+                    <input id="form-submit" type="submit" value="Submit" onclick="addtodash()" style="display: none;">
+                </form>
+            </div>
+            <div class="container">
+
+                <div class="code">
+                    <img src="images/paytm.jpeg" style="width: 80%;" alt="Qrcode"/>
+                </div>
+
+                <div class="btn">
+                    <input style="cursor: pointer;" type="submit" value="Paytm Done!!" class="submit-btn" onclick="addtodash()"/>
+                    <input style="cursor: pointer;" type="submit" value="Cash On Delivery" class="submit-btn" onclick="addtodash()"/>
+                </div>
+                <div class="back-btn" style="display: flex; justify-content:center;    margin-left: 60px;">
+                    <button class="back" onclick="goBack()" style="cursor: pointer; ">Go
+                                    Back</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="Copyright" style="background-color:#1fa8a8 ;padding:20px">© 2023 Copyright:<a class="text-white" href="#">ApnaKart.com</a>
+        </div>
+
+        <script>
+            function addtodash() {
+
+
+                var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+                var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+                // Set the value of the hidden input field to the cart items
+                document.getElementById('cartItems').value = JSON.stringify(cartItems);
+
+
+                cartItems.length=0;
+                localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                var form = document.querySelector('form');
+                form.submit();
+            }
+        </script>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+        <script src="srcipt.js"></script>
+    </body>
+</html>

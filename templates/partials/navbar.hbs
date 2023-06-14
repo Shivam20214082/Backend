@@ -21,24 +21,28 @@
         style="background-color: rgb(191, 235, 237);"
       ></div>
     </div>
-    <img
+    {{!-- <img
       src="images/search.jpg"
       alt=""
       style="height: 31px;width: 35px;margin-top: 7px; cursor: pointer;"
-      onclick="window.location.href='';"
-    />
+      onclick="window.location.href=''; class="search-btn"
+    /> --}}
     <li class="cart"><img
         onclick="window.location.href='/cart';"
         src="images/cart.png"
-        style="cursor: pointer;"
-      /><a style="margin-top: 5px;" href="/404">Sell</a></li>
+        style="cursor: pointer; padding:0%"
+      /></li><li style="padding: 0px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.25rem;
+}"><a  href="/404">Sell</a></li>
     {{#if loggedIn}}
       <input
         class="logout"
-        id="login-btn"
-        onclick="logout()"
+        id="logout-btn"
+        onclick="direct()"
         type="button"
-        value="Logout"
+        value="Dashboard"
       />
     {{else}}
       <input

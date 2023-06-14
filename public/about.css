@@ -22,7 +22,7 @@
   margin-left: 230px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
 }
 .about_us {
   width: 96%;
@@ -36,4 +36,24 @@
   text-align: center;
   text-shadow: #666;
   text-decoration: solid;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+      padding-left: 15px;
+      padding-right: 15px;
+  }
+  
+  .col-lg-6 {
+      text-align: center;
+  }
+  .student{
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .about_us .text {
+      font-size: 24px;
+  }
 }

@@ -1,16 +1,12 @@
 function redirectToNewPage() {
   window.location.href = "/login";
 }
+function direct() {
+  window.location.href = "/dashboard";
+}
 
 function goToNextPage() {
   window.location.href = "/404";
-}
-
-// Function to logout and redirect to home page
-// add an event listener to the logout button
-const logoutButton = document.getElementById("logout-btn");
-if (logoutButton) {
-  logoutButton.addEventListener("click", logout);
 }
 
 // modify the logout function
@@ -19,6 +15,7 @@ function logout() {
     .then(() => {
       // reload the page after logging out
       window.location.reload();
+      window.location.href = "/";
     })
     .catch((error) => console.error(error));
 }
@@ -104,29 +101,4 @@ function updateSearchResults(products) {
   } else {
     searchResultsContainer.style.display = "none";
   }
-}
-
-// const message = new URLSearchParams(window.location.search).get('message');
-//     if (message) {
-//         alert(message);
-// }
-
-const loginButton = document.getElementById("login-btn");
-
-// Check if user is authenticated
-if (document.cookie.includes("authToken=123456789")) {
-  // Change login button to logout button
-  loginButton.textContent = "Logout";
-  loginButton.addEventListener("click", () => {
-    // Unset cookie and redirect to home page
-    document.cookie =
-      "authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    window.location.href = "/";
-  });
-} else {
-  loginButton.textContent = "Login";
-  loginButton.addEventListener("click", () => {
-    // Redirect to login page
-    window.location.href = "/login";
-  });
 }

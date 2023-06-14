@@ -2,11 +2,11 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const hbs = require("hbs");
-
 require("./db/conn");
 
 const User = require("./models/usermessage");
 const User1 = require("./models/userlogin");
+const User2 = require("./models/userorder");
 const port = process.env.PORT || 3000;
 
 const static_path = path.join(__dirname, "../public");
@@ -21,6 +21,7 @@ app.use(
     saveUninitialized: true,
   })
 );
+app.use(express.json());
 
 // console.log(path.join(__dirname," ../public"));
 
@@ -32,6 +33,8 @@ app.use(
 
 app.use(function (req, res, next) {
   res.locals.loggedIn = req.session.loggedIn;
+  res.locals.usern = req.session.usern;
+  res.locals.emailn = req.session.emailn;
   next();
 });
 
@@ -47,6 +50,52 @@ app.get("/", (req, res) => {
 app.get("/login", (req, res) => {
   res.render("login");
 });
+
+
+app.get("/dashboard", async (req, res) => {
+  try {
+    const user = await User1.findOne({ username: req.session.usern });
+    // console.log(req.session.usern);
+    // console.log(req.session.emailn);
+    // console.log(user);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    const orders = await User2.find({ email: user.email });
+
+    let formattedOrders = [];
+
+    orders.forEach((order) => {
+      let formattedCartItems = [];
+
+      order.cartItems.forEach((item) => {
+        let formattedItem = {
+          productImage: item.image,
+          productName: item.name,
+          productPrice: item.price,
+          productQuantity: item.quantity,
+        };
+
+        formattedCartItems.push(formattedItem);
+      });
+
+      let formattedOrder = {
+        cartItems: formattedCartItems,
+        paymentVerified: order.paymentVerified,
+        date: order.date.toDateString(),
+      };
+
+      formattedOrders.push(formattedOrder);
+    });
+
+    // console.log(formattedOrders);
+    res.render("dashboard", { orders: formattedOrders });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal server error");
+  }
+});
+
 app.get("/cart", (req, res) => {
   res.render("cart");
 });
@@ -57,7 +106,7 @@ app.get("/daal", (req, res) => {
   res.render("daal");
 });
 app.get("/payment", (req, res) => {
-  res.render("payment");
+  res.render("payment1");
 });
 app.get("/about", (req, res) => {
   res.render("about");
@@ -113,19 +162,55 @@ app.post("/contact", async (req, res) => {
   }
 });
 
+app.post("/address", async (req, res) => {
+  try {
+
+    const user = await User1.findOne({ username: req.session.usern });
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    const currentUserEmail = user.email;
+    // console.log(currentUserEmail);
+    const userData = new User2({
+      ...req.body,
+      email: currentUserEmail
+    });
+
+    // Update cartItems with data from req.body.cartItems
+    userData.cartItems = JSON.parse(req.body.cartItems);
+
+    await userData.save();
+    res.status(201).render("payment1");
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+
 app.post("/login", async (req, res) => {
   try {
     const userData = new User1(req.body);
-    await userData.save();
-    res.cookie("authToken", "123456789", { maxAge: 3600000, httpOnly: true });
-    req.session.loggedIn = true;
-    console.log(req.session.loggedIn);
-    res.status(201).render("index");
+    const user = await User1.findOne({ email: req.body.email });
+    if (user) {
+      res.redirect("/login?message=Account Already%20Exit with same Email id");
+    }
+    else{
+      await userData.save();
+      res.cookie("authToken", "123456789", { maxAge: 3600000, httpOnly: true });
+      req.session.loggedIn = true;
+      // console.log(req.session.loggedIn);
+      // console.log(req.body.username);
+      req.session.usern=req.body.username;
+      req.session.emailn=req.body.email;
+      // console.log(req.session.emailn);
+      res.status(201).render("index");
+    }
   } catch (error) {
     if (error.code === 11000 && error.keyPattern.email === 1) {
       res.status(409).send("Email already exists");
     } else if (error.code === 11000 && error.keyPattern.username === 1) {
-      res.status(409).send("Username already exists");
+      res.redirect("/login?message=Username%20not Available");
     } else {
       res.status(500).send(error);
     }
@@ -142,7 +227,7 @@ app.post("/check", async (req, res) => {
 
       // Add this code to set a flag in the session indicating that the user is logged in
       req.session.loggedIn = true;
-      console.log(req.session.loggedIn);
+      req.session.usern = user.username;
       res.status(201).render("index");
     } else {
       res.redirect("/login?message=Incorrect%20password");

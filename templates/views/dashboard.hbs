@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DashBoard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            /* background-image: url(images/404.jpeg); */
+            /* opacity: 0.5; */
+        }
+
+        h1 {
+            color: rgb(249, 4, 53);
+            font-size: 36px;
+            margin-top: 50px;
+        }
+        h2 {
+            color: rgb(12 47 220);
+            font-size: 24px;
+        }
+
+        p {
+            color: rgb(12 47 220);
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .logout {
+            margin-bottom: 10px;
+            cursor: pointer;
+            width: 30%;
+            margin-top: 25px;
+            text-align: center;
+            height: 46px;
+            border-radius: 12px;
+            color: white;
+            background-color: red;
+        }
+        .dash-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .dash-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .dash-item h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .dash-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #666;
+  }
+        </style>
+</head>
+<body>
+    
+    {{>navbar}}
+    <div class="btn" >
+    <h1>Welcome {{usern}}</h1>
+    <h2>We apologize for the inconvenience, but our website is currently undergoing maintenance.</h2>
+    <p>We are working on DashBoard profile!</p>
+    
+    <h1>My Orders</h1><br>
+<ul>
+  {{#each orders}}
+  <li style="text-align:center">
+    <ul class="dash-item">
+      {{#each this.cartItems}}
+      <li>
+        <div>
+            
+            <p><img src="{{this.productImage}}" alt="{{this.productName}}">---{{this.productName}} ------ {{this.productQuantity}} x Rs.{{this.productPrice}}</p>
+        </div>
+      </li>
+      {{/each}}<br>
+    </ul>
+    <p>Payment verified: {{this.paymentVerified}}-------------------------------------Order date: {{this.date}}</p>
+  </li>
+  {{/each}}
+</ul>
+
+    <input
+        class="logout"
+        id="logout-btn"
+        onclick="logout()"
+        type="button"
+        value="Logout"
+      />
+
+    </div>
+    {{>footeri}}
+
+
+
+
+    <script>
+
+    </script>
+
+    <script src="srcipt.js"></script>
+</body>
+</html>
