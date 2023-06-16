@@ -38,6 +38,7 @@
 }"><a  href="/404">Sell</a></li>
     {{#if loggedIn}}
       <input
+        style="padding:5px"
         class="logout"
         id="logout-btn"
         onclick="direct()"
@@ -46,6 +47,7 @@
       />
     {{else}}
       <input
+        style="padding:5px"
         class="login"
         id="login-btn"
         onclick="redirectToNewPage()"

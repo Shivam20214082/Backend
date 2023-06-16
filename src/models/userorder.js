@@ -14,6 +14,10 @@ const userSchema2 = mongoose.Schema({
     type: Number,
     required: true,
   },
+  payment_phone_number: {
+    type: Number,
+    required: true,
+  },
   address: {
     type: String,
     required: true,

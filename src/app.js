@@ -181,7 +181,7 @@ app.post("/address", async (req, res) => {
     userData.cartItems = JSON.parse(req.body.cartItems);
 
     await userData.save();
-    res.status(201).render("payment1");
+    res.status(201).render("dashboard");
   } catch (error) {
     res.status(500).send(error);
   }

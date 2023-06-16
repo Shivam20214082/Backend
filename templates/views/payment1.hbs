@@ -20,11 +20,14 @@
                     <span>full name :</span>
                     <input type="text" placeholder="Enter Your Name" name="name"/>
 
-                    <span>email :</span>
-                    <input type="email" id="current-email" placeholder="Enter Your correct Email Id" name="email" readonly/>
+                    {{!-- <span>email :</span> --}}
+                    <input type="email" id="current-email" placeholder="Enter Your correct Email Id" name="email" readonly style="display: none;"/>
 
                     <span>Phone Number :</span>
                     <input type="number" placeholder="Enter Your Number" name="phone_number"/>
+
+                    <span>Payment Phone Number :</span>
+                    <input type="number" placeholder="Enter Payment Mobile Number(0000000000 for COD)" name="payment_phone_number"/>
 
                     <span>address :</span>
                     <input type="text" placeholder="room - street - locality" name="address"/>
